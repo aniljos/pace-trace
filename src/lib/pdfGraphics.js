@@ -271,8 +271,8 @@ export async function createPdf({ title, layoutW, layoutH }) {
   const [f400, f600, f700] = await Promise.all([inter400, inter600, inter700].map(async (u) => pdf.embedFont(await load(u), { subset: true })));
   const fonts = { 400: f400, 600: f600, 700: f700, charset: new Set(f400.getCharacterSet()) };
   pdf.setTitle(title);
-  pdf.setCreator('Run Replay');
-  pdf.setProducer('Run Replay');
+  pdf.setCreator('PaceTrace');
+  pdf.setProducer('PaceTrace');
   return {
     addPage() {
       const page = pdf.addPage([A4_W, A4_H]);

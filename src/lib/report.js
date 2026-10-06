@@ -87,7 +87,7 @@ function heading(doc, title, sub, need = 70) {
 function footer(g, n, total, weatherOn) {
   const note = weatherOn ? 'Weather & air quality: Open-Meteo.com (modelled, not measured on your route)  ·  ' : '';
   T(g, `${note}Map © OpenStreetMap contributors`, MX, PH - 40, 12, 400, MUTED);
-  T(g, 'Made with Run Replay', MX, PH - 20, 12, 400, MUTED);
+  T(g, 'Made with PaceTrace', MX, PH - 20, 12, 400, MUTED);
   T(g, `Page ${n} of ${total}`, PW - MX, PH - 20, 12, 400, MUTED, 'right');
 }
 

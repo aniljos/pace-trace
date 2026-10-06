@@ -33,7 +33,7 @@ export function makeSampleGpx(name, paceFn, startIso) {
     );
   }
   return `<?xml version="1.0" encoding="UTF-8"?>
-<gpx version="1.1" creator="run-replay-sample" xmlns="http://www.topografix.com/GPX/1/1" xmlns:gpxtpx="http://www.garmin.com/xmlschemas/TrackPointExtension/v1">
+<gpx version="1.1" creator="pacetrace-sample" xmlns="http://www.topografix.com/GPX/1/1" xmlns:gpxtpx="http://www.garmin.com/xmlschemas/TrackPointExtension/v1">
 <trk><name>${name}</name><trkseg>
 ${rows.join('\n')}
 </trkseg></trk></gpx>`;

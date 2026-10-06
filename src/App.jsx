@@ -253,7 +253,7 @@ export default function App() {
   function downloadVideo() {
     const a = document.createElement('a');
     a.href = video.url;
-    a.download = `run-replay.${video.ext}`;
+    a.download = `pacetrace.${video.ext}`;
     a.click();
   }
 
@@ -264,16 +264,16 @@ export default function App() {
       const w = sum ? ` · ${formatTemp(sum.temp, tempUnit)}, ${Math.round(sum.rh)}% humidity` : '';
       return `🏃 ${r.name}: ${formatDistance(r.stats.distance, units)} in ${formatDuration(r.stats.duration)} (${formatPace(r.stats.avgSpeed, units)})${w}`;
     });
-    return [...lines, 'Made with Run Replay'].join('\n');
+    return [...lines, 'Made with PaceTrace'].join('\n');
   }
 
   // Must run straight from a click: the browser only allows the share sheet right after a user gesture.
   async function shareToWhatsApp() {
     const text = shareText();
-    const file = new File([video.blob], `run-replay.${video.ext}`, { type: video.blob.type });
+    const file = new File([video.blob], `pacetrace.${video.ext}`, { type: video.blob.type });
     if (navigator.canShare?.({ files: [file] })) {
       try {
-        await navigator.share({ files: [file], text, title: 'Run Replay' });
+        await navigator.share({ files: [file], text, title: 'PaceTrace' });
         setShareHint('');
         return;
       } catch (e) {
@@ -312,7 +312,7 @@ export default function App() {
       const safe = reportRun.name.replace(/\.[^.]+$/, '').replace(/[^\w\- ]+/g, '').trim().replace(/\s+/g, '-') || 'run';
       setReport((r) => {
         if (r) URL.revokeObjectURL(r.url);
-        return { blob, ext, url: URL.createObjectURL(blob), name: `run-report-${safe}.${ext}`, runName: reportRun.name };
+        return { blob, ext, url: URL.createObjectURL(blob), name: `pacetrace-report-${safe}.${ext}`, runName: reportRun.name };
       });
     } catch (e) {
       setMessages([`Report failed: ${e?.message || e}`]);
@@ -363,7 +363,7 @@ export default function App() {
       }}
     >
       <header className="topbar">
-        <h1>🏃 Run Replay</h1>
+        <h1>🏃 PaceTrace</h1>
         <div className="top-actions">
           <label className="btn">
             ＋ Add run
